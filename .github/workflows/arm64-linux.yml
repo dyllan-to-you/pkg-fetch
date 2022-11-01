@@ -35,6 +35,7 @@ jobs:
             PKG_FETCH_OPTION_n=node${{ matrix.target-node }}
           context: .
           file: ./Dockerfile.linux
+          platforms: ${{ matrix.docker-platform }}
           outputs: type=tar,dest=../out.tar
 
       - name: Extract binaries from Docker image
