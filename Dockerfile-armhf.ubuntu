@@ -29,6 +29,6 @@ COPY . ./
 
 RUN npm install
 
-RUN npm build
+RUN npm run build
 
 RUN npm start --node-range $PKG_FETCH_OPTION_n --platform $PKG_FETCH_OPTION_p --arch $PKG_FETCH_OPTION_a --output dist
