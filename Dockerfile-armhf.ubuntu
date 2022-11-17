@@ -3,6 +3,8 @@ FROM ubuntu:20.04
 ARG PKG_FETCH_OPTION_n
 ARG PKG_FETCH_OPTION_p
 ARG PKG_FETCH_OPTION_a
+ENV DEBIAN_FRONTEND=noninteractive TZ=America/New_York
+
 
 USER root:root
 
