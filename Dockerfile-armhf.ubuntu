@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ARG PKG_FETCH_OPTION_n
 ARG PKG_FETCH_OPTION_p
@@ -8,25 +8,26 @@ ENV DEBIAN_FRONTEND=noninteractive TZ=America/New_York
 
 USER root:root
 
-WORKDIR /root/pkg-fetch/
-
 RUN dpkg --add-architecture i386
 RUN apt update && apt install -y npm \
   python3 \
   build-essential \
   binutils-multiarch \
   libc6-dev:i386 \
-  libstdc++-10-dev:i386 \
+  libstdc++-6-dev:i386 \
   gcc-arm-linux-gnueabihf \
   g++-arm-linux-gnueabihf \
-  gcc-10-multilib \
-  gcc-10-multilib-arm-linux-gnueabihf \
-  g++-10-multilib \
-  g++-10-multilib-arm-linux-gnueabihf
+  gcc-7-multilib \
+  gcc-7-multilib-arm-linux-gnueabihf \
+  g++-7-multilib \
+  g++-7-multilib-arm-linux-gnueabihf
 
 ENV CC="arm-linux-gnueabihf-gcc" CXX="arm-linux-gnueabihf-g++" CC_host="gcc -m32" CXX_host="g++ -m32"
 
-COPY . ./
+
+WORKDIR /root/pkg-fetch/
+
+COPY . .
 
 RUN npm install
 
